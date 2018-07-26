@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/Control.OSMGeocoder.css">
+		<link rel="stylesheet" href="Leaflet.StyledLayerControl-master/css/styledLayerControl.css"> <!-- HT -->
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/Control.OSMGeocoder.js"></script>
+		<script src="Leaflet.StyledLayerControl-master/src/styledLayerControl.js"></script> <!-- HT -->
+        <script src="data/Slecht_0.js"></script>
+        <script src="data/Onvoldoende_1.js"></script>
+        <script src="data/Voldoende_2.js"></script>
+        <script src="data/Goed_3.js"></script>
+        <script src="data/Slecht_4.js"></script>
+        <script src="data/Onvoldoende_5.js"></script>
+        <script src="data/Voldoende_6.js"></script>
+        <script src="data/Goed_7.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[51.3306052307,3.36830560169],[52.0660292238,5.5522220115]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        L.control.locate().addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_Slecht_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Adres</th>\
+                        <td>' + (feature.properties['Adres'] !== null ? Autolinker.link(String(feature.properties['Adres'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Plaats</th>\
+                        <td>' + (feature.properties['Plaats'] !== null ? Autolinker.link(String(feature.properties['Plaats'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Regio</th>\
+                        <td>' + (feature.properties['Regio'] !== null ? Autolinker.link(String(feature.properties['Regio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cijfer</th>\
+                        <td>' + (feature.properties['Cijfer'] !== null ? Autolinker.link(String(feature.properties['Cijfer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Beleving</th>\
+                        <td>' + (feature.properties['Beleving'] !== null ? Autolinker.link(String(feature.properties['Beleving'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Slecht_0_0() {
+            return {
+                pane: 'pane_Slecht_0',
+                shape: 'triangle',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,4,1.0)',
+            }
+        }
+        map.createPane('pane_Slecht_0');
+        map.getPane('pane_Slecht_0').style.zIndex = 400;
+        map.getPane('pane_Slecht_0').style['mix-blend-mode'] = 'normal';
+        var layer_Slecht_0 = new L.geoJson(json_Slecht_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Slecht_0',
+            onEachFeature: pop_Slecht_0,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Slecht_0_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Slecht_0);
+        map.addLayer(layer_Slecht_0);
+        function pop_Onvoldoende_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Adres</th>\
+                        <td>' + (feature.properties['Adres'] !== null ? Autolinker.link(String(feature.properties['Adres'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Plaats</th>\
+                        <td>' + (feature.properties['Plaats'] !== null ? Autolinker.link(String(feature.properties['Plaats'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Regio</th>\
+                        <td>' + (feature.properties['Regio'] !== null ? Autolinker.link(String(feature.properties['Regio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cijfer</th>\
+                        <td>' + (feature.properties['Cijfer'] !== null ? Autolinker.link(String(feature.properties['Cijfer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Beleving</th>\
+                        <td>' + (feature.properties['Beleving'] !== null ? Autolinker.link(String(feature.properties['Beleving'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Onvoldoende_1_0() {
+            return {
+                pane: 'pane_Onvoldoende_1',
+                shape: 'triangle',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(244,163,0,1.0)',
+            }
+        }
+        map.createPane('pane_Onvoldoende_1');
+        map.getPane('pane_Onvoldoende_1').style.zIndex = 401;
+        map.getPane('pane_Onvoldoende_1').style['mix-blend-mode'] = 'normal';
+        var layer_Onvoldoende_1 = new L.geoJson(json_Onvoldoende_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Onvoldoende_1',
+            onEachFeature: pop_Onvoldoende_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Onvoldoende_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Onvoldoende_1);
+        map.addLayer(layer_Onvoldoende_1);
+        function pop_Voldoende_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Adres</th>\
+                        <td>' + (feature.properties['Adres'] !== null ? Autolinker.link(String(feature.properties['Adres'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Plaats</th>\
+                        <td>' + (feature.properties['Plaats'] !== null ? Autolinker.link(String(feature.properties['Plaats'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Regio</th>\
+                        <td>' + (feature.properties['Regio'] !== null ? Autolinker.link(String(feature.properties['Regio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cijfer</th>\
+                        <td>' + (feature.properties['Cijfer'] !== null ? Autolinker.link(String(feature.properties['Cijfer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Beleving</th>\
+                        <td>' + (feature.properties['Beleving'] !== null ? Autolinker.link(String(feature.properties['Beleving'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Voldoende_2_0() {
+            return {
+                pane: 'pane_Voldoende_2',
+                shape: 'triangle',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,42,255,1.0)',
+            }
+        }
+        map.createPane('pane_Voldoende_2');
+        map.getPane('pane_Voldoende_2').style.zIndex = 402;
+        map.getPane('pane_Voldoende_2').style['mix-blend-mode'] = 'normal';
+        var layer_Voldoende_2 = new L.geoJson(json_Voldoende_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Voldoende_2',
+            onEachFeature: pop_Voldoende_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Voldoende_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Voldoende_2);
+        map.addLayer(layer_Voldoende_2);
+        function pop_Goed_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Adres</th>\
+                        <td>' + (feature.properties['Adres'] !== null ? Autolinker.link(String(feature.properties['Adres'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Plaats</th>\
+                        <td>' + (feature.properties['Plaats'] !== null ? Autolinker.link(String(feature.properties['Plaats'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Regio</th>\
+                        <td>' + (feature.properties['Regio'] !== null ? Autolinker.link(String(feature.properties['Regio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cijfer</th>\
+                        <td>' + (feature.properties['Cijfer'] !== null ? Autolinker.link(String(feature.properties['Cijfer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Beleving</th>\
+                        <td>' + (feature.properties['Beleving'] !== null ? Autolinker.link(String(feature.properties['Beleving'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Goed_3_0() {
+            return {
+                pane: 'pane_Goed_3',
+                shape: 'triangle',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,223,0,1.0)',
+            }
+        }
+        map.createPane('pane_Goed_3');
+        map.getPane('pane_Goed_3').style.zIndex = 403;
+        map.getPane('pane_Goed_3').style['mix-blend-mode'] = 'normal';
+        var layer_Goed_3 = new L.geoJson(json_Goed_3, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Goed_3',
+            onEachFeature: pop_Goed_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Goed_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Goed_3);
+        map.addLayer(layer_Goed_3);
+        function pop_Slecht_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Adres</th>\
+                        <td>' + (feature.properties['Adres'] !== null ? Autolinker.link(String(feature.properties['Adres'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Plaats</th>\
+                        <td>' + (feature.properties['Plaats'] !== null ? Autolinker.link(String(feature.properties['Plaats'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Regio</th>\
+                        <td>' + (feature.properties['Regio'] !== null ? Autolinker.link(String(feature.properties['Regio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cijfer</th>\
+                        <td>' + (feature.properties['Cijfer'] !== null ? Autolinker.link(String(feature.properties['Cijfer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kwaliteit</th>\
+                        <td>' + (feature.properties['Kwaliteit'] !== null ? Autolinker.link(String(feature.properties['Kwaliteit'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Slecht_4_0() {
+            return {
+                pane: 'pane_Slecht_4',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,0,4,1.0)',
+            }
+        }
+        map.createPane('pane_Slecht_4');
+        map.getPane('pane_Slecht_4').style.zIndex = 404;
+        map.getPane('pane_Slecht_4').style['mix-blend-mode'] = 'normal';
+        var layer_Slecht_4 = new L.geoJson(json_Slecht_4, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Slecht_4',
+            onEachFeature: pop_Slecht_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Slecht_4_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Slecht_4);
+        map.addLayer(layer_Slecht_4);
+        function pop_Onvoldoende_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Adres</th>\
+                        <td>' + (feature.properties['Adres'] !== null ? Autolinker.link(String(feature.properties['Adres'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Plaats</th>\
+                        <td>' + (feature.properties['Plaats'] !== null ? Autolinker.link(String(feature.properties['Plaats'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Regio</th>\
+                        <td>' + (feature.properties['Regio'] !== null ? Autolinker.link(String(feature.properties['Regio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cijfer</th>\
+                        <td>' + (feature.properties['Cijfer'] !== null ? Autolinker.link(String(feature.properties['Cijfer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kwaliteit</th>\
+                        <td>' + (feature.properties['Kwaliteit'] !== null ? Autolinker.link(String(feature.properties['Kwaliteit'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Onvoldoende_5_0() {
+            return {
+                pane: 'pane_Onvoldoende_5',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(244,163,0,1.0)',
+            }
+        }
+        map.createPane('pane_Onvoldoende_5');
+        map.getPane('pane_Onvoldoende_5').style.zIndex = 405;
+        map.getPane('pane_Onvoldoende_5').style['mix-blend-mode'] = 'normal';
+        var layer_Onvoldoende_5 = new L.geoJson(json_Onvoldoende_5, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Onvoldoende_5',
+            onEachFeature: pop_Onvoldoende_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Onvoldoende_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Onvoldoende_5);
+        map.addLayer(layer_Onvoldoende_5);
+        function pop_Voldoende_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Adres</th>\
+                        <td>' + (feature.properties['Adres'] !== null ? Autolinker.link(String(feature.properties['Adres'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Plaats</th>\
+                        <td>' + (feature.properties['Plaats'] !== null ? Autolinker.link(String(feature.properties['Plaats'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Regio</th>\
+                        <td>' + (feature.properties['Regio'] !== null ? Autolinker.link(String(feature.properties['Regio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cijfer</th>\
+                        <td>' + (feature.properties['Cijfer'] !== null ? Autolinker.link(String(feature.properties['Cijfer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kwaliteit</th>\
+                        <td>' + (feature.properties['Kwaliteit'] !== null ? Autolinker.link(String(feature.properties['Kwaliteit'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Voldoende_6_0() {
+            return {
+                pane: 'pane_Voldoende_6',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,42,255,1.0)',
+            }
+        }
+        map.createPane('pane_Voldoende_6');
+        map.getPane('pane_Voldoende_6').style.zIndex = 406;
+        map.getPane('pane_Voldoende_6').style['mix-blend-mode'] = 'normal';
+        var layer_Voldoende_6 = new L.geoJson(json_Voldoende_6, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Voldoende_6',
+            onEachFeature: pop_Voldoende_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Voldoende_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Voldoende_6);
+        map.addLayer(layer_Voldoende_6);
+        function pop_Goed_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Adres</th>\
+                        <td>' + (feature.properties['Adres'] !== null ? Autolinker.link(String(feature.properties['Adres'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Plaats</th>\
+                        <td>' + (feature.properties['Plaats'] !== null ? Autolinker.link(String(feature.properties['Plaats'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Regio</th>\
+                        <td>' + (feature.properties['Regio'] !== null ? Autolinker.link(String(feature.properties['Regio'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cijfer</th>\
+                        <td>' + (feature.properties['Cijfer'] !== null ? Autolinker.link(String(feature.properties['Cijfer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Kwaliteit</th>\
+                        <td>' + (feature.properties['Kwaliteit'] !== null ? Autolinker.link(String(feature.properties['Kwaliteit'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Goed_7_0() {
+            return {
+                pane: 'pane_Goed_7',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,223,0,1.0)',
+            }
+        }
+        map.createPane('pane_Goed_7');
+        map.getPane('pane_Goed_7').style.zIndex = 407;
+        map.getPane('pane_Goed_7').style['mix-blend-mode'] = 'normal';
+        var layer_Goed_7 = new L.geoJson(json_Goed_7, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Goed_7',
+            onEachFeature: pop_Goed_7,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Goed_7_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Goed_7);
+        map.addLayer(layer_Goed_7);
+        var osmGeocoder = new L.Control.OSMGeocoder({
+            collapsed: false,
+            position: 'topright',
+            text: 'Search',
+        });
+        osmGeocoder.addTo(map);
+        var baseMaps = {};
+        
+		
+		 // YJ
+        var overlays = [{
+            groupName: "Kwaliteit",
+            expanded: false,
+            layers: { '<img src="legend/Goed_7.png" /> Goed': layer_Goed_7,'<img src="legend/Voldoende_6.png" /> Voldoende': layer_Voldoende_6,'<img src="legend/Onvoldoende_5.png" /> Onvoldoende': layer_Onvoldoende_5,'<img src="legend/Slecht_4.png" /> Slecht': layer_Slecht_4,
+                }
+        }, {
+            groupName: "Beleving",
+            expanded: false,
+            layers: { '<img src="legend/Goed_3.png" /> Goed': layer_Goed_3,'<img src="legend/Voldoende_2.png" /> Voldoende': layer_Voldoende_2,'<img src="legend/Onvoldoende_1.png" /> Onvoldoende': layer_Onvoldoende_1,'<img src="legend/Slecht_0.png" /> Slecht': layer_Slecht_0,
+                   }
+        }];
+        
+        var layerControlOptions = { container_width : "300px", container_maxHeight : "600px", group_maxHeight : "200px", exclusive : false, collapsed : false }; 
+        
+        
+        var myLayerControl = L.Control.styledLayerControl(baseMaps, overlays, layerControlOptions);
+        map.addControl(myLayerControl);
+        myLayerControl.unSelectGroup ("Kwaliteit");
+		myLayerControl.unSelectGroup ("Beleving");
+        setBounds();
+        </script>
+    </body>
+</html>
